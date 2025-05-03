@@ -62,7 +62,7 @@ function task3() {
   });
 
   bufferLayer = L.geoJSON(buffers, {
-    style: { color: "blue", weight: 1, fillOpacity: 0.3 },
+    style: { color: "green", weight: 1, fillOpacity: 0.3 },
   }).addTo(mymap);
 
   nonOverlapLayer = L.geoJSON(nonOverlapping, {

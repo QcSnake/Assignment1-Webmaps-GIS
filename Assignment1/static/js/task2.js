@@ -1,4 +1,4 @@
-// Use Leaflet's default icon for school markers
+// Use Leaflet's default icon for location markers
 var defaultIcon = L.icon({
   iconUrl: "https://unpkg.com/leaflet/dist/images/marker-icon.png",
   shadowUrl: "https://unpkg.com/leaflet/dist/images/marker-shadow.png",
@@ -8,72 +8,72 @@ var defaultIcon = L.icon({
   shadowSize: [41, 41],
 });
 
-var schools = [
+var places = [
   {
-    name: "Hagagymnasiet",
-    coords: [60.489157, 15.414135],
-    students: 800,
-    address: "Läroverksgatan 6, 784 40 Borlänge",
-    info: "A well-known gymnasium in Borlänge.",
+    name: "Svampen",
+    coords: [59.288219539789274, 15.22547660538062],
+    visitors: 150000,
+    address: "Svampen, 703 75 Örebro",
+    info: "Iconic mushroom-shaped water tower with observation deck and restaurant offering panoramic city views.",
   },
   {
-    name: "Borlänge High",
-    coords: [60.49, 15.42],
-    students: 1200,
-    address: "Street 1, Borlänge",
-    info: "A popular high school in the city.",
+    name: "Örebro Castle",
+    coords: [59.2740032006127, 15.215429349689321],
+    visitors: 200000,
+    address: "Kansligatan 1, 703 61 Örebro",
+    info: "Medieval castle on an island in Svartån river dating back to the 13th century.",
   },
   {
-    name: "Central Elementary",
-    coords: [60.485, 15.43],
-    students: 600,
-    address: "Street 2, Borlänge",
-    info: "An elementary school in the city center.",
+    name: "Wadköping",
+    coords: [59.2727495408786, 15.232793913207129],
+    visitors: 120000,
+    address: "Bertil Wadströms gata, 702 11 Örebro",
+    info: "Open-air museum with historic buildings and craft shops showing Örebro's cultural heritage.",
   },
   {
-    name: "Eastside School",
-    coords: [60.4875, 15.41],
-    students: 500,
-    address: "Street 3, Borlänge",
-    info: "A school on the east side of Borlänge.",
+    name: "Stortorget",
+    coords: [59.2718620582811, 15.213385000984674],
+    visitors: 500000,
+    address: "Stortorget, 703 61 Örebro",
+    info: "Main square in the city center with shops, restaurants and cultural events.",
   },
   {
-    name: "Westside Academy",
-    coords: [60.4905, 15.405],
-    students: 700,
-    address: "Street 4, Borlänge",
-    info: "An academy known for its strong academic programs.",
+    name: "Örebro University",
+    coords: [59.25482345641353, 15.249287612431942],
+    visitors: 17000,
+    address: "Fakultetsgatan 1, 702 81 Örebro",
+    info: "Modern university campus with around 17,000 students and beautiful grounds.",
   },
 ];
 
-var schoolMarkers = [];
+var placeMarkers = [];
 var polylineMeasureControl = null;
 
-function clearSchoolMarkers() {
-  schoolMarkers.forEach(function (marker) {
+function clearPlaceMarkers() {
+  placeMarkers.forEach(function (marker) {
     mymap.removeLayer(marker);
   });
-  schoolMarkers = [];
+  placeMarkers = [];
 }
 
 function task2() {
-  clearSchoolMarkers();
+  clearPlaceMarkers();
 
   // Show sidebar
-  window.sidebar.setContent("<h2>Select a school marker for more info</h2>");
+  window.sidebar.setContent("<h2>Select a landmark marker for more info</h2>");
   window.sidebar.show();
 
   // Add markers
-  schools.forEach(function (school) {
-    var marker = L.marker(school.coords, { icon: defaultIcon }).addTo(mymap);
-    schoolMarkers.push(marker);
+  places.forEach(function (place) {
+    var marker = L.marker(place.coords, { icon: defaultIcon }).addTo(mymap);
+    placeMarkers.push(marker);
 
     marker.on("click", function () {
       const content = `
-        <h2>${school.name}</h2>
-        <p><strong>Address:</strong> ${school.address}</p>
-        <p><strong>Number of Students:</strong> ${school.students}</p>
-        <p>${school.info}</p>
+        <h2>${place.name}</h2>
+        <p><strong>Address:</strong> ${place.address}</p>
+        <p><strong>Annual Visitors:</strong> ${place.visitors}</p>
+        <p>${place.info}</p>
       `;
       window.sidebar.setContent(content);
     });
@@ -94,9 +94,9 @@ function task2() {
   };
   polylineMeasureControl = L.control.polylineMeasure(options).addTo(mymap);
 
-  // Connect schools
-  var lineCoords = schools.map(function (school) {
-    return { lat: school.coords[0], lng: school.coords[1] };
+  // Connect places
+  var lineCoords = places.map(function (place) {
+    return { lat: place.coords[0], lng: place.coords[1] };
   });
   polylineMeasureControl.seed([lineCoords]);
 }

@@ -12,8 +12,8 @@ var defaultIcon = L.icon({
 
 function task4() {
   const imageBounds = [
-    [59.63151595124441, 16.528875970173914],
-    [59.63252769848319, 16.530340786934413],
+    [59.598395, 15.223799],
+    [59.597454, 15.225675],
   ];
 
   if (arenaOverlay && mymap.hasLayer(arenaOverlay)) {
@@ -22,15 +22,15 @@ function task4() {
     return;
   }
 
-  arenaOverlay = L.imageOverlay("/static/img/arena.png", imageBounds); // ✅ FIXED
+  arenaOverlay = L.imageOverlay("/static/img/Lidl.png", imageBounds); // ✅ FIXED
   arenaOverlay.addTo(mymap);
-  arenaOverlay.bindPopup("<h1>Expandia Arena</h1>");
+  arenaOverlay.bindPopup("<h1>Lindesberg Lidl</h1>");
   arenaOverlay.on("click", () => arenaOverlay.openPopup());
   mymap.fitBounds(imageBounds);
 
   window.sidebar.setContent(`
-    <h2>Expandia Arena</h2>
-    <p>This image shows the layout of the arena Vasagatan 89, 722 23 Västerås.</p>
+    <h2>Lidl</h2>
+    <p>This image shows a Lidl in Lindesberg</p>
   `);
   window.sidebar.show();
 }

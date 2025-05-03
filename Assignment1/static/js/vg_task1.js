@@ -11,39 +11,39 @@ var defaultIcon = L.icon({
 // Define the list of cities
 var cities = [
   {
-    name: "Cape Town, South Africa",
-    coords: [-33.89800254432449, 18.499471299066073],
-    Quickfacts: "Population: 4.6 million, Area: 2,461 km²",
-    address: "Cape Town, South Africa",
-    info: "A vibrant city known for its stunning landscapes and culture.",
+    name: "Mogadishu, Somalia",
+    coords: [2.0469, 45.3182],
+    Quickfacts: "Population: 2.2 million, Area: 91 km²",
+    address: "Mogadishu, Somalia",
+    info: "The capital and largest city of Somalia, located on the Indian Ocean coast.",
   },
   {
-    name: "New York City, USA",
-    coords: [40.712776, -74.005974],
-    Quickfacts: "Population: 8.4 million, Area: 789 km²",
-    address: "New York City, USA",
-    info: "The largest city in the USA, known for its skyline and culture.",
+    name: "Stockholm, Sweden",
+    coords: [59.3293, 18.0686],
+    Quickfacts: "Population: 975,000, Area: 188 km²",
+    address: "Stockholm, Sweden",
+    info: "The capital of Sweden, spread across 14 islands with a beautiful blend of historic and modern architecture.",
   },
   {
-    name: "Tokyo, Japan",
-    coords: [35.689487, 139.691711],
-    Quickfacts: "Population: 14 million, Area: 2,194 km²",
-    address: "Tokyo, Japan",
-    info: "The capital city of Japan, known for its modernity and tradition.",
+    name: "Beijing, China",
+    coords: [39.9042, 116.4074],
+    Quickfacts: "Population: 21.5 million, Area: 16,410 km²",
+    address: "Beijing, China",
+    info: "The capital of China, known for its ancient sites such as the Forbidden City and modern architecture.",
   },
   {
-    name: "Paris, France",
-    coords: [48.856613, 2.352222],
-    Quickfacts: "Population: 2.1 million, Area: 105 km²",
-    address: "Paris, France",
-    info: "The capital city of France, known for its art and culture.",
+    name: "Brasília, Brazil",
+    coords: [-15.7801, -47.9292],
+    Quickfacts: "Population: 3.1 million, Area: 5,802 km²",
+    address: "Brasília, Brazil",
+    info: "The capital city of Brazil, known for its modernist architecture and unique city planning.",
   },
   {
-    name: "Dubai, UAE",
-    coords: [25.276987, 55.296249],
-    Quickfacts: "Population: 3.3 million, Area: 4,114 km²",
-    address: "Dubai, UAE",
-    info: "A modern city known for its luxury and skyscrapers.",
+    name: "Canberra, Australia",
+    coords: [-35.2809, 149.1300],
+    Quickfacts: "Population: 430,000, Area: 814 km²",
+    address: "Canberra, Australia",
+    info: "The capital city of Australia, carefully planned with large areas of natural vegetation and Lake Burley Griffin.",
   },
 ];
 
@@ -83,7 +83,7 @@ function vg_task1() {
       var lon = city.coords[1];
 
       // Use WeatherAPI.com's current weather endpoint with your API key
-      var weatherUrl = `https://api.weatherapi.com/v1/current.json?key=770ec5a5ed744876a57172350251304&q=${lat},${lon}`;
+      var weatherUrl = `https://api.weatherapi.com/v1/current.json?key=c65e680ed6994968b04191053250305&q=${lat},${lon}`;
 
       // Debug: log the URL being fetched
       console.log("Fetching weather data from:", weatherUrl);
