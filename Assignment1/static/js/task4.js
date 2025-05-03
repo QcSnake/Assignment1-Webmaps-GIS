@@ -22,7 +22,7 @@ function task4() {
     return;
   }
 
-  arenaOverlay = L.imageOverlay("/static/img/Lidl.png", imageBounds); // ✅ FIXED
+  arenaOverlay = L.imageOverlay("/static/img/Lidl.png", imageBounds); // Fixat
   arenaOverlay.addTo(mymap);
   arenaOverlay.bindPopup("<h1>Lindesberg Lidl</h1>");
   arenaOverlay.on("click", () => arenaOverlay.openPopup());

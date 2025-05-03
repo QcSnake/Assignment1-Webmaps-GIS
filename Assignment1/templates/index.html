@@ -55,15 +55,15 @@
   <div id="mapdiv"></div>
 
   <div id="tsk_bottons">
-    <h2>Functions (Tasks)</h2>
+    <h2>Tasks</h2>
     <button id="t1">Task1</button>
     <button id="t2">Task2</button>
     <button id="t3">Task3</button>
     <button id="t4">Task4</button>
     <button id="t5">Task5</button>
     <br /><br />
-    <button id="vg_t1">VG Task5</button>
-    <button id="vg_t2">VG Task6</button>
+    <button id="vg_t1">VG Task6</button>
+    <button id="vg_t2">VG Task7</button>
     <br /><br />
     <button id="reset">Reset</button>
   </div>
@@ -100,7 +100,7 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       mymap = L.map("mapdiv", {
-        center: [60.48868922712431, 15.421371459960938],
+        center: [60.59400700444539, 15.599365307804204],
         zoom: 13,
         zoomControl: false,
       });
@@ -130,7 +130,7 @@
           mymap.removeLayer(layer);
         }
       });
-      mymap.setView([60.48868922712431, 15.421371459960938], 13);
+      mymap.setView([60.59400700444539, 15.599365307804204], 13);
       window.sidebar.hide();
     }
   </script>
