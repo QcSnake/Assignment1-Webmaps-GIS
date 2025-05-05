@@ -15,8 +15,23 @@ function makeClusterMarker(lat, lon, color) {
   });
 }
 
+// Track if the task layer is currently active
+let vgTask2Active = false;
+
 function vg_task2() {
-  clearCityMarkers();
+  // If task is already active, remove markers and return
+  if (vgTask2Active) {
+    clearCityMarkers();
+    window.sidebar.hide();
+    vgTask2Active = false;
+    return;
+  }
+  
+  // First, clean up any existing markers from other tasks
+  resetMap();
+  
+  // Set this task as active
+  vgTask2Active = true;
 
   window.sidebar.setContent('<h2>School Clusters</h2><p>Loading…</p>');
   window.sidebar.show();
@@ -25,6 +40,9 @@ function vg_task2() {
   d3.csv("/static/data/school_locations.csv").then(function(data) {
     // Extract coordinates for clustering
     const points = data.map(d => [+d.xcoord, +d.ycoord]);
+    
+    // Also extract coordinates for map bounds
+    const latLngPoints = data.map(d => [+d.ycoord, +d.xcoord]);
     
     // Perform k-means clustering
     const k = 5; // Number of clusters
@@ -58,6 +76,11 @@ function vg_task2() {
         `);
       });
     });
+    
+    // Zoom map to fit all school locations
+    if (latLngPoints.length > 0) {
+      mymap.fitBounds(latLngPoints);
+    }
   }).catch(function(err) {
     console.error('Error loading CSV:', err);
     window.sidebar.setContent('<h2>Error</h2><p>Could not load school location data.</p>');

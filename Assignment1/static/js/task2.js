@@ -59,6 +59,9 @@ function clearPlaceMarkers() {
 function task2() {
   clearPlaceMarkers();
 
+  // Immediately zoom to Örebro
+  mymap.setView([59.27412, 15.2151], 13); // Örebro city center
+
   // Show sidebar
   window.sidebar.setContent("<h2>Select a landmark marker for more info</h2>");
   window.sidebar.show();

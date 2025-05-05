@@ -1,4 +1,7 @@
 function task1() {
+  // Immediately zoom to Falun when task1 is clicked
+  mymap.setView([60.6065, 15.6355], 14); // Falun center
+
   var polylineCoords = [
     [60.604309, 15.634885],
     [60.60738, 15.63281], 
@@ -22,7 +25,6 @@ function task1() {
       `<h3>Falun Knutpunkten</h3><img src="/static/img/falun_knutpunkten.jpg" width="150px">`
     );
 
-  // Klar
   var polygonCoords = [
     [60.600346, 15.611500],
     [60.598875, 15.608731],

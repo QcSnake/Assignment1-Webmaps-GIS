@@ -64,12 +64,18 @@ function vg_task1() {
   // Show initial sidebar message
   window.sidebar.setContent("<h2>Select a City marker for more info</h2>");
   window.sidebar.show();
+  
+  // Adjust view to show all cities - world view
+  mymap.setView([20, 0], 2);
 
   cities.forEach(function (city) {
     var marker = L.marker(city.coords, { icon: defaultIcon }).addTo(mymap);
     cityMarkers.push(marker);
 
     marker.on("click", function () {
+      // Zoom to the clicked city
+      mymap.setView(city.coords, 10);
+      
       // Show basic city info with a loading weather message
       window.sidebar.setContent(`
         <h2>${city.name}</h2>

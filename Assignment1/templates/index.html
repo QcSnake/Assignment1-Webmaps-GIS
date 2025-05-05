@@ -130,6 +130,17 @@
           mymap.removeLayer(layer);
         }
       });
+      
+      // Reset all task-specific markers and layers
+      if (typeof clearCityMarkers === "function") clearCityMarkers();
+      if (typeof clearSupermarketLayers === "function") clearSupermarketLayers();
+      if (typeof clearfuelstationLayers === "function") clearfuelstationLayers();
+      if (typeof clearPlaceMarkers === "function") clearPlaceMarkers();
+      
+      // Reset any active state flags for tasks
+      if (typeof vgTask2Active !== "undefined") vgTask2Active = false;
+      
+      // Reset to the original view
       mymap.setView([60.59400700444539, 15.599365307804204], 13);
       window.sidebar.hide();
     }
